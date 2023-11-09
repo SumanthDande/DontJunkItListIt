@@ -39,5 +39,30 @@ public class CarPartsDAOImpl implements CarPartsDAO {
     public void delete(CarParts parts) {
         entityManager.remove(parts);
     }
+
+	@Override
+	public List<CarParts> findByCategoryAndPriceBetweenAndLocationContaining(String category, double minPrice,
+			double maxPrice, String location) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CarParts> findByPartNameContaining(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CarParts> findByCategoryAndPartNameContaining(String category, String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CarParts> findByCategoryAndLocationContaining(String category, String location) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
