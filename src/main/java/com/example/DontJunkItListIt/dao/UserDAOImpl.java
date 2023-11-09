@@ -42,6 +42,15 @@ public class UserDAOImpl implements UserDAO {
         entityManager.remove(user);
     }
 
+    @Override
+    public User findByEmail(String email) {
+        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.userName = :email", User.class);
+        query.setParameter("username", email);
+
+        List<User> users = query.getResultList();
+        return users.isEmpty() ? null : users.get(0);
+    }
+
 	
 		
 	}
