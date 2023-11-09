@@ -23,6 +23,12 @@ public class UserReviewDAOImpl implements UserReviewDAO {
                 .setParameter("part", reviewedPart)
                 .getResultList();
     }
+    
+    @Override
+    public void save(UserReview userReview) {
+        // Use the EntityManager to persist the user review entity
+        entityManager.persist(userReview);
+    }
 
 
 }
