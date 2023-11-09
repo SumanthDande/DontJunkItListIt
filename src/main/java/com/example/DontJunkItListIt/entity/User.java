@@ -25,8 +25,12 @@ public class User {
 
 	    @Column(name = "email") // Specify column name
 	    private String email;
+	    
+	    @Column(name="password")
+	    private String password;
 
-	    @Column(name = "registrationDate") // Specify column name
+
+		@Column(name = "registrationDate") // Specify column name
 	    private Date registrationDate; // Using java.util.Date for date fields
 
 	    @Column(name = "userRating") // Specify column name
@@ -47,10 +51,157 @@ public class User {
 	    @Column(name = "subscriptionExpiry") // Specify column name
 	    private Date subscriptionExpiry; // Using java.util.Date for date fields
 
-	    // Constructors, getters, setters, and other methods can be added here
+		public Long getUserID() {
+			return userID;
+		}
 
-	    // Additional methods and attributes can be added as needed
+		public void setUserID(Long userID) {
+			this.userID = userID;
+		}
+
+		public String getUserName() {
+			return userName;
+		}
+		
+		public String getPassword() {
+			return password;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+
+		public String getLocation() {
+			return location;
+		}
+
+		public void setLocation(String location) {
+			this.location = location;
+		}
+
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
+
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public Date getRegistrationDate() {
+			return registrationDate;
+		}
+
+		public void setRegistrationDate(Date registrationDate) {
+			this.registrationDate = registrationDate;
+		}
+
+		public double getUserRating() {
+			return userRating;
+		}
+
+		public void setUserRating(double userRating) {
+			this.userRating = userRating;
+		}
+
+		public String getRole() {
+			return role;
+		}
+
+		public void setRole(String role) {
+			this.role = role;
+		}
+
+		public String getStatus() {
+			return status;
+		}
+
+		public void setStatus(String status) {
+			this.status = status;
+		}
+
+		public String getAddress() {
+			return address;
+		}
+
+		public void setAddress(String address) {
+			this.address = address;
+		}
+
+		public Long getSubscriptionID() {
+			return subscriptionID;
+		}
+
+		public void setSubscriptionID(Long subscriptionID) {
+			this.subscriptionID = subscriptionID;
+		}
+
+		public Date getSubscriptionExpiry() {
+			return subscriptionExpiry;
+		}
+
+		public void setSubscriptionExpiry(Date subscriptionExpiry) {
+			this.subscriptionExpiry = subscriptionExpiry;
+		}
+
+		public User(Long userID, String userName, String location, String phoneNumber, String email,
+				Date registrationDate, double userRating, String role, String status, String address,
+				Long subscriptionID, Date subscriptionExpiry) {
+			super();
+			this.userID = userID;
+			this.userName = userName;
+			this.location = location;
+			this.phoneNumber = phoneNumber;
+			this.email = email;
+			this.registrationDate = registrationDate;
+			this.userRating = userRating;
+			this.role = role;
+			this.status = status;
+			this.address = address;
+			this.subscriptionID = subscriptionID;
+			this.subscriptionExpiry = subscriptionExpiry;
+		}
+
+		
+
+		@Override
+		public String toString() {
+			return "User [userID=" + userID + ", userName=" + userName + ", location=" + location + ", phoneNumber="
+					+ phoneNumber + ", email=" + email + ", registrationDate=" + registrationDate + ", userRating="
+					+ userRating + ", role=" + role + ", status=" + status + ", address=" + address
+					+ ", subscriptionID=" + subscriptionID + ", subscriptionExpiry=" + subscriptionExpiry + "]";
+		}
+
+		 public User(String userName, String location, String phoneNumber, String email, String password,
+					Date registrationDate, double userRating, String role, String status, String address,
+					Long subscriptionID, Date subscriptionExpiry) {
+				super();
+				this.userName = userName;
+				this.location = location;
+				this.phoneNumber = phoneNumber;
+				this.email = email;
+				this.password = password;
+				this.registrationDate = registrationDate;
+				this.userRating = userRating;
+				this.role = role;
+				this.status = status;
+				this.address = address;
+				this.subscriptionID = subscriptionID;
+				this.subscriptionExpiry = subscriptionExpiry;
+			}
+	    
+	    
 	}
 
-    // Constructors, getters, setters, and other methods can be added here
 
