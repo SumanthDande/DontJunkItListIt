@@ -67,6 +67,16 @@
         <version>9.1.0</version> <!-- Specify the version you need -->
         <scope>provided</scope>
     </dependency>
+    
+    
+    <!-- Other dependencies -->
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-core</artifactId>
+        <version>5.5.1</version> <!-- Use the appropriate version -->
+    </dependency>
+
+
 
 
 
