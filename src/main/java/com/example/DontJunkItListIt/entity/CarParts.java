@@ -41,8 +41,132 @@ public class CarParts {
     @JoinColumn(name = "cartID") // Specify the join column for Cart
     private Cart cart; // Many-to-One relationship with Cart
 
+	public Long getPartID() {
+		return partID;
+	}
 
-    // Constructors, getters, setters, and other methods can be added here
+	public void setPartID(Long partID) {
+		this.partID = partID;
+	}
 
-    // Additional methods and attributes can be added as needed
+	public String getPartName() {
+		return partName;
+	}
+
+	public void setPartName(String partName) {
+		this.partName = partName;
+	}
+
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public String getCondition() {
+		return condition;
+	}
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public CarParts(String partName, String manufacturer, int year, String condition, String category, double price,
+			String color, String description, User user, Cart cart) {
+		super();
+		this.partName = partName;
+		this.manufacturer = manufacturer;
+		this.year = year;
+		this.condition = condition;
+		this.category = category;
+		this.price = price;
+		this.color = color;
+		this.description = description;
+		this.user = user;
+		this.cart = cart;
+	}
+
+	public CarParts(Long partID, String partName, String manufacturer, int year, String condition, String category,
+			double price, String color, String description, User user, Cart cart) {
+		super();
+		this.partID = partID;
+		this.partName = partName;
+		this.manufacturer = manufacturer;
+		this.year = year;
+		this.condition = condition;
+		this.category = category;
+		this.price = price;
+		this.color = color;
+		this.description = description;
+		this.user = user;
+		this.cart = cart;
+	}
+
+	@Override
+	public String toString() {
+		return "CarParts [partID=" + partID + ", partName=" + partName + ", manufacturer=" + manufacturer + ", year="
+				+ year + ", condition=" + condition + ", category=" + category + ", price=" + price + ", color=" + color
+				+ ", description=" + description + ", user=" + user + ", cart=" + cart + "]";
+	}
+
+
+    
 }
