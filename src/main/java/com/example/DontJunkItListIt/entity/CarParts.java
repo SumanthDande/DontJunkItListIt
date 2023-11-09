@@ -129,6 +129,11 @@ public class CarParts {
 		this.cart = cart;
 	}
 
+	
+	public CarParts() {
+		super();
+	}
+
 	public CarParts(String partName, String manufacturer, int year, String condition, String category, double price,
 			String color, String description, User user, Cart cart) {
 		super();
