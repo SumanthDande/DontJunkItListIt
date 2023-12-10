@@ -18,6 +18,10 @@ public class CarParts {
     @Column(name = "year") // Specify column name
     private int year;
 
+    @Lob
+    @Column(name= "imageData", nullable = true)
+    private byte[] imageData;
+    
     @Column(name = "condition") // Specify column name
     private String condition;
 
@@ -133,13 +137,25 @@ public class CarParts {
 	public CarParts() {
 		super();
 	}
+	
 
-	public CarParts(String partName, String manufacturer, int year, String condition, String category, double price,
-			String color, String description, User user, Cart cart) {
+	public byte[] getImageData() {
+		return imageData;
+	}
+
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
+
+	
+	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] imageData, String condition,
+			String category, double price, String color, String description, User user, Cart cart) {
 		super();
+		this.partID = partID;
 		this.partName = partName;
 		this.manufacturer = manufacturer;
 		this.year = year;
+		this.imageData = imageData;
 		this.condition = condition;
 		this.category = category;
 		this.price = price;
@@ -149,10 +165,25 @@ public class CarParts {
 		this.cart = cart;
 	}
 
-	public CarParts(Long partID, String partName, String manufacturer, int year, String condition, String category,
+	public CarParts(String partName, String manufacturer, int year, byte[] imageData, String condition, String category,
 			double price, String color, String description, User user, Cart cart) {
 		super();
-		this.partID = partID;
+		this.partName = partName;
+		this.manufacturer = manufacturer;
+		this.year = year;
+		this.imageData = imageData;
+		this.condition = condition;
+		this.category = category;
+		this.price = price;
+		this.color = color;
+		this.description = description;
+		this.user = user;
+		this.cart = cart;
+	}
+
+	public CarParts(String partName, String manufacturer, int year, String condition, String category, double price,
+			String color, String description, User user, Cart cart) {
+		super();
 		this.partName = partName;
 		this.manufacturer = manufacturer;
 		this.year = year;
