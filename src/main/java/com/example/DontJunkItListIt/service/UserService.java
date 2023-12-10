@@ -2,8 +2,9 @@ package com.example.DontJunkItListIt.service;
 
 import com.example.DontJunkItListIt.entity.User;
 
+import jakarta.security.enterprise.AuthenticationException;
+
 public interface UserService {
     void registerUser(User user);
-    User authenticateUser(String email, String password);
-    // Add additional methods for email verification, password resets, etc.
+    public User authenticateUser(String email, String password) throws AuthenticationException;    // Add additional methods for email verification, password resets, etc.
 }

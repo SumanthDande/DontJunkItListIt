@@ -175,6 +175,21 @@ public class User {
 
 		
 
+		public User(String userName, String location, String phoneNumber, String email, String password,
+				String address) {
+			super();
+			this.userName = userName;
+			this.location = location;
+			this.phoneNumber = phoneNumber;
+			this.email = email;
+			this.password = password;
+			this.address = address;
+		}
+
+		public User() {
+			super();
+		}
+
 		@Override
 		public String toString() {
 			return "User [userID=" + userID + ", userName=" + userName + ", location=" + location + ", phoneNumber="
