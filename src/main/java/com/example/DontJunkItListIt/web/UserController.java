@@ -26,16 +26,20 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:4200" , allowCredentials = "true", allowedHeaders = "*")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
         userService.registerUser(user);
+        System.out.println("Controller printing password: "+user.getPassword());
         return ResponseEntity.ok("User registered successfully");
     }
 
     // End point for user authentication
     @PostMapping("/login")
-    @CrossOrigin(origins = "http://localhost:4200" , allowCredentials = "true", allowedHeaders = "*")
+    @CrossOrigin(origins = "http://localhost:4200", /*, allowCredentials = "true",*/ allowedHeaders = "*")
     public ResponseEntity<String> authenticateUser(@RequestBody Credentials credentials) throws AuthenticationException {
-    	String username = credentials.getUsername();
+    	String email = credentials.getEmail();
+    	System.out.println("Controller email: "+email);
         String password = credentials.getPassword();
-    	User authenticatedUser = userService.authenticateUser(username, password);
+    	System.out.println(password);
+    	User authenticatedUser = userService.authenticateUser(email, password);
+    	System.out.println(authenticatedUser);
 
     	try {
     		if (authenticatedUser != null) {
