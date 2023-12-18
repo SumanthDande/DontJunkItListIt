@@ -44,10 +44,13 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findByEmail(String email) {
-        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.userName = :email", User.class);
-        query.setParameter("username", email);
+    	String jpql = "from User u where u.email=:email";
+    	TypedQuery<User> query = entityManager.createQuery(jpql, User.class);
+       // TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+        query.setParameter("email", email);
 
         List<User> users = query.getResultList();
+        System.out.println("Printing DAO password: " +users.get(0).getPassword());
         return users.isEmpty() ? null : users.get(0);
     }
 

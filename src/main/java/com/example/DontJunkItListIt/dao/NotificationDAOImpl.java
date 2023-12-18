@@ -16,7 +16,7 @@ public class NotificationDAOImpl implements NotificationDAO {
     @Override
     public Notification findById(Long id) {
         return entityManager.find(Notification.class, id);
-    }
+    }	
 
     @Override
     public List<Notification> findAll() {

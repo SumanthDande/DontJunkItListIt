@@ -1,6 +1,9 @@
 package com.example.DontJunkItListIt.service;
 
 import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +28,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
 
+
     @Override
     public void registerUser(User user) {
        // logic to set user data, hashing passwords, and saving the user
+    	System.out.println("Printing password before saving: " +user.getPassword());
        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+       System.out.println("Printing encrypted password: " + BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+    	//user.setPassword();
+    	//user.setPassword(user.getPassword());
        user.setRegistrationDate(new Date());
        user.setSubscriptionExpiry(null);
        user.setSubscriptionID(null);
@@ -39,28 +47,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User authenticateUser(String email, String password) throws AuthenticationException {
-        try {
+    public User authenticateUser(String email, String password) {
+            System.out.println("Printing service implementation: "+email);
             User user = userDAO.findByEmail(email);
-            System.out.println(user.getPassword());
-
-            if (user == null) {
-                throw new UserNotFoundException("User with email " + email + " not found");
-            }
+            System.out.println("printing user after finding by email in service implementation: "+user.getPassword());
+            
 
             if (!isPasswordValid(password, user.getPassword())) {
-                
-                throw new InvalidPasswordException("Invalid password");
+            //if (password != user.getPassword()) {
+                System.out.println("passwords do not match");
+                System.out.println("Printing user password from db"+user.getPassword());
             }
 
-           
+
             return user;
-        } catch (Exception e) {
-            // Log the exception for debugging purposes
-            //log.error("Error during authentication: " + e.getMessage());
-        	//e.printStackTrace();
-            throw new AuthenticationException("Authentication failed");
-        }
+       
     }
 
 
@@ -68,5 +69,18 @@ public class UserServiceImpl implements UserService {
        
         return BCrypt.checkpw(rawPassword, hashedPassword);
     }
+
+	@Override
+	public User getUserByEmail(String email) {
+		return userDAO.findByEmail(email);
+	}
+
+	@Override
+	public void updateUser(User user) {
+		userDAO.save(user);
+		
+	}
+    
+    
 
 }

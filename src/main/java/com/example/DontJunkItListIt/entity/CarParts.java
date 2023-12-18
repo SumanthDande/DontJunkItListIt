@@ -19,8 +19,25 @@ public class CarParts {
     private int year;
 
     @Lob
-    @Column(name= "imageData", nullable = true)
-    private byte[] imageData;
+    @Column(name= "image1", nullable = true)
+    private byte[] image1;
+    
+    @Lob
+    @Column(name= "image2", nullable = true)
+    private byte[] image2;
+    
+    @Lob
+    @Column(name= "image3", nullable = true)
+    private byte[] image3;
+    
+    @Lob
+    @Column(name= "image4", nullable = true)
+    private byte[] image4;
+    
+    @Lob
+    @Column(name= "image5", nullable = true)
+    private byte[] image5;
+    
     
     @Column(name = "condition") // Specify column name
     private String condition;
@@ -38,7 +55,7 @@ public class CarParts {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "userID", referencedColumnName = "userID") // Specify the join column for User
+    @JoinColumn(name = "userID") // Specify the join column for User
     private User user; // Many-to-One relationship with User
     
     @ManyToOne
@@ -134,28 +151,214 @@ public class CarParts {
 	}
 
 	
+	
+
+	public byte[] getImage1() {
+		return image1;
+	}
+
+	public void setImage1(byte[] image1) {
+		this.image1 = image1;
+	}
+
+	public byte[] getImage2() {
+		return image2;
+	}
+
+	public void setImage2(byte[] image2) {
+		this.image2 = image2;
+	}
+
+	public byte[] getImage3() {
+		return image3;
+	}
+
+	public void setImage3(byte[] image3) {
+		this.image3 = image3;
+	}
+
+	public byte[] getImage4() {
+		return image4;
+	}
+
+	public void setImage4(byte[] image4) {
+		this.image4 = image4;
+	}
+
+	public byte[] getImage5() {
+		return image5;
+	}
+
+	public void setImage5(byte[] image5) {
+		this.image5 = image5;
+	}
+	
+	/**
+	 * 
+	 */
+
 	public CarParts() {
 		super();
 	}
 	
-
-	public byte[] getImageData() {
-		return imageData;
+	/**
+	 * @param partID
+	 * @param partName
+	 * @param manufacturer
+	 * @param year
+	 * @param image1
+	 * @param condition
+	 * @param price
+	 * @param color
+	 * @param description
+	 * @param user
+	 * @param cart
+	 */
+	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] image1, String condition,
+			double price, String color, String description, User user, Cart cart) {
+		super();
+		this.partID = partID;
+		this.partName = partName;
+		this.manufacturer = manufacturer;
+		this.year = year;
+		this.image1 = image1;
+		this.condition = condition;
+		this.price = price;
+		this.color = color;
+		this.description = description;
+		this.user = user;
+		this.cart = cart;
 	}
 
-	public void setImageData(byte[] imageData) {
-		this.imageData = imageData;
+	/**
+	 * @param partID
+	 * @param partName
+	 * @param manufacturer
+	 * @param year
+	 * @param image1
+	 * @param image2
+	 * @param image3
+	 * @param image4
+	 * @param condition
+	 * @param category
+	 * @param price
+	 * @param color
+	 * @param description
+	 * @param user
+	 * @param cart
+	 */
+	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] image1, byte[] image2,
+			byte[] image3, byte[] image4, String condition, String category, double price, String color,
+			String description, User user, Cart cart) {
+		super();
+		this.partID = partID;
+		this.partName = partName;
+		this.manufacturer = manufacturer;
+		this.year = year;
+		this.image1 = image1;
+		this.image2 = image2;
+		this.image3 = image3;
+		this.image4 = image4;
+		this.condition = condition;
+		this.category = category;
+		this.price = price;
+		this.color = color;
+		this.description = description;
+		this.user = user;
+		this.cart = cart;
 	}
 
-	
-	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] imageData, String condition,
+	/**
+	 * @param partID
+	 * @param partName
+	 * @param manufacturer
+	 * @param year
+	 * @param image1
+	 * @param image2
+	 * @param image3
+	 * @param condition
+	 * @param category
+	 * @param price
+	 * @param color
+	 * @param description
+	 * @param user
+	 * @param cart
+	 */
+	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] image1, byte[] image2,
+			byte[] image3, String condition, String category, double price, String color, String description, User user,
+			Cart cart) {
+		super();
+		this.partID = partID;
+		this.partName = partName;
+		this.manufacturer = manufacturer;
+		this.year = year;
+		this.image1 = image1;
+		this.image2 = image2;
+		this.image3 = image3;
+		this.condition = condition;
+		this.category = category;
+		this.price = price;
+		this.color = color;
+		this.description = description;
+		this.user = user;
+		this.cart = cart;
+	}
+
+	/**
+	 * @param partID
+	 * @param partName
+	 * @param manufacturer
+	 * @param year
+	 * @param image1
+	 * @param image2
+	 * @param condition
+	 * @param category
+	 * @param price
+	 * @param color
+	 * @param description
+	 * @param user
+	 * @param cart
+	 */
+	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] image1, byte[] image2,
+			String condition, String category, double price, String color, String description, User user, Cart cart) {
+		super();
+		this.partID = partID;
+		this.partName = partName;
+		this.manufacturer = manufacturer;
+		this.year = year;
+		this.image1 = image1;
+		this.image2 = image2;
+		this.condition = condition;
+		this.category = category;
+		this.price = price;
+		this.color = color;
+		this.description = description;
+		this.user = user;
+		this.cart = cart;
+	}
+
+	/**
+	 * @param partID
+	 * @param partName
+	 * @param manufacturer
+	 * @param year
+	 * @param image1
+	 * @param condition
+	 * @param category
+	 * @param price
+	 * @param color
+	 * @param description
+	 * @param user
+	 * @param cart
+	 */
+	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] image1, String condition,
 			String category, double price, String color, String description, User user, Cart cart) {
 		super();
 		this.partID = partID;
 		this.partName = partName;
 		this.manufacturer = manufacturer;
 		this.year = year;
-		this.imageData = imageData;
+		this.image1 = image1;
 		this.condition = condition;
 		this.category = category;
 		this.price = price;
@@ -165,28 +368,42 @@ public class CarParts {
 		this.cart = cart;
 	}
 
-	public CarParts(String partName, String manufacturer, int year, byte[] imageData, String condition, String category,
-			double price, String color, String description, User user, Cart cart) {
-		super();
-		this.partName = partName;
-		this.manufacturer = manufacturer;
-		this.year = year;
-		this.imageData = imageData;
-		this.condition = condition;
-		this.category = category;
-		this.price = price;
-		this.color = color;
-		this.description = description;
-		this.user = user;
-		this.cart = cart;
-	}
+	/**
+	 * 
+	 */
+	
 
-	public CarParts(String partName, String manufacturer, int year, String condition, String category, double price,
-			String color, String description, User user, Cart cart) {
+	/**
+	 * @param partID
+	 * @param partName
+	 * @param manufacturer
+	 * @param year
+	 * @param image1
+	 * @param image2
+	 * @param image3
+	 * @param image4
+	 * @param image5
+	 * @param condition
+	 * @param category
+	 * @param price
+	 * @param color
+	 * @param description
+	 * @param user
+	 * @param cart
+	 */
+	public CarParts(Long partID, String partName, String manufacturer, int year, byte[] image1, byte[] image2,
+			byte[] image3, byte[] image4, byte[] image5, String condition, String category, double price, String color,
+			String description, User user, Cart cart) {
 		super();
+		this.partID = partID;
 		this.partName = partName;
 		this.manufacturer = manufacturer;
 		this.year = year;
+		this.image1 = image1;
+		this.image2 = image2;
+		this.image3 = image3;
+		this.image4 = image4;
+		this.image5 = image5;
 		this.condition = condition;
 		this.category = category;
 		this.price = price;
