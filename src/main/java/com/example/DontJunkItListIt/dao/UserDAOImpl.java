@@ -50,6 +50,7 @@ public class UserDAOImpl implements UserDAO {
         query.setParameter("email", email);
 
         List<User> users = query.getResultList();
+        System.out.println("Printing DAO password: " +users.get(0).getPassword());
         return users.isEmpty() ? null : users.get(0);
     }
 

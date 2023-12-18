@@ -215,6 +215,21 @@ public class User {
 				this.subscriptionID = subscriptionID;
 				this.subscriptionExpiry = subscriptionExpiry;
 			}
+
+		/**
+		 * Constructor to update user details from front end
+		 * @param phoneNumber
+		 * @param password
+		 * @param address
+		 */
+		public User(String phoneNumber, String password, String address) {
+			super();
+			this.phoneNumber = phoneNumber;
+			this.password = password;
+			this.address = address;
+		}
+		 
+		 
 	    
 	    
 	}

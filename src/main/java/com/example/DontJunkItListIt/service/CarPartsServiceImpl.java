@@ -1,5 +1,6 @@
 package com.example.DontJunkItListIt.service;
 
+import com.example.DontJunkItListIt.dto.ProductDetailsRequest;
 import com.example.DontJunkItListIt.dto.ProductDto;
 import com.example.DontJunkItListIt.entity.CarParts;
 
@@ -80,5 +81,39 @@ public class CarPartsServiceImpl implements CarPartsService {
 		 return optionalCarParts.orElse(null);
 		//return null;
 	}
+
+	@Override
+	public List<CarParts> findProductsByUserId(Long userId) {
+        return productRepository.findByUser_userID(userId);
+	}
+
+	@Override
+	public void updateCarPartDetails(Long carPartId, ProductDetailsRequest updatedDetails) throws Exception {
+		
+        Optional<CarParts> optionalCarParts = productRepository.findById(carPartId);
+
+        if (optionalCarParts.isPresent()) {
+            CarParts existingCarParts = optionalCarParts.get();
+
+            // Update the car part details
+            if (updatedDetails.getPartName() != null) {
+                existingCarParts.setPartName(updatedDetails.getPartName());
+            }
+            if (updatedDetails.getPrice() != null) {
+                existingCarParts.setPrice(updatedDetails.getPrice());
+            }
+            if (updatedDetails.getColor() != null) {
+                existingCarParts.setColor(updatedDetails.getColor());
+            }
+            if (updatedDetails.getDescription() != null) {
+                existingCarParts.setDescription(updatedDetails.getDescription());
+            }
+
+            // Save the updated car part
+            productRepository.save(existingCarParts);
+        } else {
+            throw new Exception("Car part not found");
+        }
+    }
 
 }

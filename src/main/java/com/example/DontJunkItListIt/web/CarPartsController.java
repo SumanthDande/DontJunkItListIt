@@ -1,5 +1,6 @@
 package com.example.DontJunkItListIt.web;
 
+import com.example.DontJunkItListIt.dto.ProductDetailsRequest;
 import com.example.DontJunkItListIt.dto.ProductDto;
 import com.example.DontJunkItListIt.entity.CarParts;
 import com.example.DontJunkItListIt.service.CarPartsService;
@@ -33,12 +34,6 @@ public class CarPartsController {
         }
     }
 
-//    @PostMapping(value = "/add", consumes =  "multipart/form-data" /*, consumes = MediaType.APPLICATION_JSON*/)
-//    public ResponseEntity<CarParts> addCarPart(@RequestPart("file") MultipartFile file, @RequestPart("carPartsDto") CarPartsDto carPartsDto) {
-//        CarParts savedCarPart = carPartsService.addCarPart(carPartsDto, file);
-//        return new ResponseEntity<>(savedCarPart, HttpStatus.CREATED);
-//    }
-
   
     
     @GetMapping("/list")
@@ -59,5 +54,25 @@ public class CarPartsController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<CarParts>> getProductsByUserId(@PathVariable String userId) {
+        List<CarParts> products = carPartsService.findProductsByUserId(Long.parseLong(userId));
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+    
+    @PutMapping
+    public ResponseEntity<?> updateProductDetails(
+            @PathVariable Long productId,
+            @RequestBody ProductDetailsRequest updatedDetails) {
+        try {
+        	carPartsService.updateCarPartDetails(productId, updatedDetails);
+            return ResponseEntity.ok("Product details updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } 
+    }
 
+    
 }

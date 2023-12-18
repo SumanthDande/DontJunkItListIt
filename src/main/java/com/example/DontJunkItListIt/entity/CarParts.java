@@ -55,7 +55,7 @@ public class CarParts {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "userID", referencedColumnName = "userID") // Specify the join column for User
+    @JoinColumn(name = "userID") // Specify the join column for User
     private User user; // Many-to-One relationship with User
     
     @ManyToOne

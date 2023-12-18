@@ -1,5 +1,6 @@
 package com.example.DontJunkItListIt.service;
 
+import com.example.DontJunkItListIt.dto.ProductDetailsRequest;
 import com.example.DontJunkItListIt.dto.ProductDto;
 import com.example.DontJunkItListIt.entity.CarParts;
 
@@ -17,5 +18,9 @@ public interface CarPartsService {
     List<CarParts> getAllCarParts();
 
 	CarParts getProductById(int productId);
+
+	List<CarParts> findProductsByUserId(Long userId);
+
+	void updateCarPartDetails(Long productId, ProductDetailsRequest updatedDetails) throws Exception;
 
 }
